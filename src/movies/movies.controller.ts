@@ -8,9 +8,9 @@ import {
   Post,
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
-import { Movie } from 'src/movies/entities/movie.entity';
-import { CreateMovieDto } from 'src/movies/dto/create-movie.dto';
-import { UpdateMovieDto } from 'src/movies/dto/update-movie.dto';
+import { Movie } from './entities/movie.entity';
+import { CreateMovieDto } from './dto/create-movie.dto';
+import { UpdateMovieDto } from './dto/update-movie.dto';
 
 @Controller('movies') // = RequestMapping
 export class MoviesController {
