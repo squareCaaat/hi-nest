@@ -8,8 +8,9 @@ import {
   Post,
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
-import { Movie } from 'src/entities/movie.entity';
-import { CreateMovieDto } from 'src/dto/create-movie.dto';
+import { Movie } from 'src/movies/entities/movie.entity';
+import { CreateMovieDto } from 'src/movies/dto/create-movie.dto';
+import { UpdateMovieDto } from 'src/movies/dto/update-movie.dto';
 
 @Controller('movies') // = RequestMapping
 export class MoviesController {
@@ -36,7 +37,7 @@ export class MoviesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: number, @Body() updateData) {
+  update(@Param('id') id: number, @Body() updateData: UpdateMovieDto) {
     return this.moviesService.update(id, updateData);
   }
 }
