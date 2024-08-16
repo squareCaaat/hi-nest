@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
 import { Movie } from 'src/entities/movie.entity';
+import { CreateMovieDto } from 'src/dto/create-movie.dto';
 
 @Controller('movies') // = RequestMapping
 export class MoviesController {
@@ -25,7 +26,7 @@ export class MoviesController {
   }
 
   @Post()
-  create(@Body() movieData) {
+  create(@Body() movieData: CreateMovieDto) {
     return this.moviesService.crate(movieData);
   }
 
@@ -35,10 +36,7 @@ export class MoviesController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateData) {
-    return {
-      updatedMovie: id,
-      ...updateData,
-    };
+  update(@Param('id') id: string, @Body() updateData: CreateMovieDto) {
+    return this.moviesService.update(id, updateData);
   }
 }
